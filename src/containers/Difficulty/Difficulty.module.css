@@ -1,0 +1,20 @@
+.Difficulty {
+    width: 50%;
+    margin: auto;
+    box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 29px -8px;
+    border-radius: 50px;
+    background-color: wheat;
+    height: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ul {
+    padding: 0px;
+}
+
+li {
+    background-color: wheat;
+    list-style-type: none;
+}

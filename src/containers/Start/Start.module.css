@@ -1,0 +1,24 @@
+.Start {
+    /* width: 50%; */
+    margin: auto;
+    box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 29px -8px;
+    border-radius: 50px;
+    background-color: wheat;
+    height: 550px;
+    width: 50%;
+}
+
+.Start ul {
+    list-style-type: none;
+    padding: 0px 100px;
+}
+
+.GameLogo {
+    width: 50%;
+    margin: auto;
+}
+
+.GameLogo img {
+    width: 300px;
+    margin: 30px auto;
+}

@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, Suspense } from 'react';
 import './App.css';
+import { Route, Switch, withRouter, Router } from 'react-router-dom';
+import UserContext from './context/UserContext';
+import history from './history/history';
 
-function App() {
+
+const Difficulty = React.lazy(() => {
+  return import('./containers/Difficulty/Difficulty');
+});
+
+const Game = React.lazy(() => {
+  return import('./containers/Game/Game');
+});
+
+const Start = React.lazy(() => {
+  return import('./containers/Start/Start');
+});
+
+const App = props => {
+  const [userContext, setUserContext] = useState({ userName: '' });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <Router history={history}>
+        <Switch>
+          <UserContext.Provider value={[userContext, setUserContext]}>
+            <Suspense fallback={<p>Loading</p>}>
+
+              <Route path='/select-difficulty' render={() => <Difficulty {...props} />}></Route>
+              <Route path='/game' render={() => <Game {...props} />}></Route>
+              <Route path='/' exact render={() => <Start {...props} />}></Route>
+            </Suspense>
+          </UserContext.Provider>
+
+        </Switch>
+      </Router>
     </div>
   );
 }
 
-export default App;
+export default withRouter(App);
